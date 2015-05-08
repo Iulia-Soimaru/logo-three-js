@@ -23,7 +23,7 @@
           HEIGHT = window.innerHeight;
 
       //Create a renderer and add it to the DOM
-      renderer = new THREE.WebGlRenderer{{antialias:true}};
+      renderer = new THREE.WebGLRenderer({antialias:true});
       renderer.setSize(WIDTH, HEIGHT);
       document.body.appendChild(renderer.domElement);
 
@@ -57,9 +57,20 @@
         scene.add(mesh);
       });
 
+      //Add OrbitControls so that we can pan around with the mouse
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    }
+
+    //Render the scene and updates the render as needed
+    function animate(){
+      requestAnimationFrame(animate);
+
+      //Render the scene.
+      renderer.render(scene, camera);
+      controls.update();
     }
 
   </script>
-  <h3>Hello</h3>
 </body>
 </html>
