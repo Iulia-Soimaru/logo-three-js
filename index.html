@@ -40,9 +40,26 @@
         camera.aspect = WIDTH / HEIGHT;
         camera.updateProjectionMatrix();
       });
+
+      //Set background color of the scene
+      renderer.setClearColorHex(0x333f47, 1);
+
+      //Create a light, set it's position and add it to the scene
+      var light = new THREE.PointLight(0xffffff);
+      light.position.set(-100, 200, 100)
+      scene.add(light);
+
+      //Load in the mesh and add it to the scene
+      var loader = new THREE.JSONLoader();
+      loader.load("model/treehouse_logo.js", function(geometry){
+        var material = new THREE.MeshLambertMaterial({color: 0x55B663});
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+      });
+
     }
 
   </script>
-
+  <h3>Hello</h3>
 </body>
 </html>
